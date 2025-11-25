@@ -4,37 +4,38 @@ version '1.0-SNAPSHOT'
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath("com.android.tools.build:gradle:8.13.1")
     }
 }
 
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
 
 android {
-    compileSdkVersion 30
     namespace "fr.g123k.deviceapps"
 
-    defaultConfig {
-        minSdkVersion 16
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    compileSdk = 36
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
+    defaultConfig {
+        minSdk = 23
     }
 
     dependencies {
-        implementation 'androidx.annotation:annotation:1.2.0'
+        implementation 'androidx.annotation:annotation:1.9.1'
     }
 }
